@@ -1,0 +1,15 @@
+{
+  "name": "push-for-github",
+  "description": "Push notifications for Github",
+  "repository": "https://github.com/negebauer/push-for-github",
+  "author": {
+    "name": "Nicolás Gebauer",
+    "email": "negebauerm@gmail.com",
+    "url": "https://negebauer.com"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.13.0"
+  }
+}
