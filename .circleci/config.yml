@@ -4,7 +4,7 @@ version: 2
 
 root-folder: &root-folder ~/push-for-github
 node-cache-key: &node-cache-key node-v1-{{ checksum "package.json" }}
-yarn-cache-key: &yarn-cache-key yarn-v1-{{ checksum "yarn.lock" }}
+yarn-cache-key: &yarn-cache-key yarn-v1-{{ checksum "~/push-for-github/yarn.lock" }}
 
 restore-yarn-cache: &restore-yarn-cache
   restore_cache:
