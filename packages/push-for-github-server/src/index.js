@@ -3,5 +3,5 @@
 module.exports = pushForGithubServer;
 
 function pushForGithubServer() {
-    // TODO
+    console.log('asd')
 }
