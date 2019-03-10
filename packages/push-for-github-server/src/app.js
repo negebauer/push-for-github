@@ -13,3 +13,4 @@ app.use(ctx => ctx.body = { message: 'Hello World!' })
 process.on('warning', e => console.warn(e.stack))
 
 module.exports = app
+
