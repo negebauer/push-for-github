@@ -3,8 +3,8 @@
   "description": "Push notifications for Github",
   "repository": "https://github.com/negebauer/push-for-github",
   "author": "Nicolás Gebauer <negebauerm@gmail.com> (https://negebauer.com)",
-  "contributors": [],
   "license": "MIT",
+  "contributors": [],
   "workspaces": [
     "packages/*"
   ],
