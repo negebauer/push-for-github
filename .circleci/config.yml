@@ -46,8 +46,8 @@ checkout-push-for-github-server: &checkout-push-for-github-server
 halt-if-no-changes-push-for-github-server:
   &halt-if-no-changes-push-for-github-server
   run:
-    - name: Halt if no changes to push-for-github-server
-    - command: . ../../.circleci/should-run.sh push-for-github-server
+    name: Halt if no changes to push-for-github-server
+    command: . ../../.circleci/should-run.sh push-for-github-server
 
 ######### Jobs #########
 
