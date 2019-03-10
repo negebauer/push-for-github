@@ -67,4 +67,4 @@ workflows:
   version: 2
   commit:
     jobs:
-      - push-for-github-server-build
+      - push-for-github-server-yarn
