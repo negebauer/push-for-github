@@ -2,15 +2,27 @@
   "name": "push-for-github-server",
   "version": "0.0.1",
   "description": "Server code for push-for-github",
+  "private": true,
   "repository": "https://github.com/negebauer/push-for-github.git",
   "author": "Nicolás Gebauer <negebauerm@gmail.com> (https://negebauer.com)",
   "license": "MIT",
-  "contributors": [],
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "docker-build": "docker build . -t push-for-github-server",
+    "docker-run": "docker run -p 3000:3000 --rm -ti push-for-github-server"
   },
   "bugs": {
     "url": "https://github.com/negebauer/push-for-github/issues"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-cors": "^0.0.16",
+    "koa-logger": "^3.2.0"
   }
 }

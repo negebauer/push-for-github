@@ -2,16 +2,14 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": [
-    "packages/*"
-  ],
   "command": {
     "publish": {
       "conventionalCommits": true,
       "githubRelease": true
     },
     "version": {
-      "allowBranch": "master"
+      "allowBranch": "master",
+      "message": "chore(release): publish"
     }
   }
 }

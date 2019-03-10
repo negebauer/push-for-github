@@ -1,13 +1,16 @@
 {
   "name": "push-for-github",
   "description": "Push notifications for Github",
+  "private": true,
   "repository": "https://github.com/negebauer/push-for-github",
   "author": "Nicolás Gebauer <negebauerm@gmail.com> (https://negebauer.com)",
   "license": "MIT",
-  "contributors": [],
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "circleci-validate": "circleci config validate"
+  },
   "devDependencies": {
     "lerna": "^3.13.0"
   }
