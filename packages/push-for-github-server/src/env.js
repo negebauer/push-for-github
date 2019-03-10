@@ -11,4 +11,3 @@ module.exports = {
   PRODUCTION: NODE_ENV === 'production',
   DEVELOPMENT: NODE_ENV === 'development',
 }
-
