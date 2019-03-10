@@ -11,7 +11,8 @@
       "allowBranch": [
         "master",
         "f/server"
-      ]
+      ],
+      "message": "chore(release): publish"
     }
   }
 }
