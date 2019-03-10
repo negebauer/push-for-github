@@ -38,16 +38,15 @@ push-for-github-server-config: &push-for-github-server-config
   working_directory: *push-for-github-server-folder
   docker:
     - image: circleci/node:11.10
+  environment:
+    DOCKER_REPO: negebauer/push-for-github-server
 
 checkout-push-for-github-server: &checkout-push-for-github-server
   checkout:
     path: *root-folder
 
-halt-if-no-changes-push-for-github-server:
-  &halt-if-no-changes-push-for-github-server
-  run:
-    name: Halt if no changes to push-for-github-server
-    command: . ../../.circleci/should-run.sh push-for-github-server
+should-run-push-for-github-server: &should-run-push-for-github-server
+  run: . ../../.circleci/should-run.sh push-for-github-server
 
 ######### Jobs #########
 
@@ -56,7 +55,7 @@ jobs:
     <<: *push-for-github-server-config
     steps:
       - *checkout-push-for-github-server
-      - *halt-if-no-changes-push-for-github-server
+      - *should-run-push-for-github-server
       - *restore-yarn-cache
       - *restore-node-cache
       - *yarn-install
@@ -67,10 +66,20 @@ jobs:
     <<: *push-for-github-server-config
     steps:
       - *checkout-push-for-github-server
-      - *halt-if-no-changes-push-for-github-server
+      - *should-run-push-for-github-server
       - *restore-yarn-cache
       - *restore-node-cache
-      - run: ls ./node_modules
+      - run: echo TODO linter
+
+  push-for-github-server-docker:
+    <<: *push-for-github-server-config
+    steps:
+      - *checkout-push-for-github-server
+      - *should-run-push-for-github-server
+      - setup_remote_docker
+      - run: docker build . -t $DOCKER_REPO
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker push $DOCKER_REPO
 
 ######### Workflows #########
 
@@ -82,3 +91,6 @@ workflows:
       - push-for-github-server-linter:
           requires:
             - push-for-github-server-yarn
+      - push-for-github-server-docker:
+          requires:
+            - push-for-github-server-linter
