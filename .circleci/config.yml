@@ -19,3 +19,11 @@ jobs:
     steps:
       - checkout
       - run: echo TODO
+
+######### Workflows #########
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - push-for-github-server-build
