@@ -1,24 +1,65 @@
 version: 2
 
-######### Variables #########
+######### Common #########
 
-root-folder: &root-folder ~/push-for-github-mobile
+root-folder: &root-folder ~/push-for-github
+node-cache-key: &node-cache-key node-v1-{{ checksum "package.json" }}
+yarn-cache-key: &yarn-cache-key yarn-v1-{{ checksum "yarn.lock" }}
 
-######### Configs #########
+restore-yarn-cache: &restore-yarn-cache
+  restore_cache:
+    key: *yarn-cache-key
 
-node-config: &node-config
-  working_directory: *root-folder
+restore-node-cache: &restore-node-cache
+  restore_cache:
+    key: *node-cache-key
+
+yarn-install: &yarn-install
+  run: yarn
+
+save-yarn-cache: &save-yarn-cache
+  save_cache:
+    key: *yarn-cache-key
+    paths:
+      - ~/.cache/yarn
+
+save-node-cache: &save-node-cache
+  save_cache:
+    key: *node-cache-key
+    paths:
+      - node_modules
+      - ../../node_modules
+
+######### push-for-github-server #########
+
+push-for-github-server-folder: &push-for-github-server-folder ~/push-for-github/packages/push-for-github-server
+
+checkout-push-for-github-server: &checkout-push-for-github-server
+  checkout:
+    path: *root-folder
+
+push-for-github-server-config: &push-for-github-server-config
+  working_directory: *push-for-github-server-folder
   docker:
     - image: circleci/node:11.10
 
 ######### Jobs #########
 
 jobs:
-  push-for-github-server-build:
-    <<: *node-config
+  push-for-github-server-yarn:
+    <<: *push-for-github-server-config
     steps:
       - checkout
-      - run: echo TODO
+      - *restore-yarn-cache
+      - *restore-node-cache
+      - *yarn-install
+      - *save-yarn-cache
+      - *save-node-cache
+      - persist_to_workspace:
+          root: *root-folder
+          paths:
+            - node_modules
+            - ../../node_modules
 
 ######### Workflows #########
 

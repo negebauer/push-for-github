@@ -8,6 +8,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "circleci-validate": "circleci config validate"
+  },
   "devDependencies": {
     "lerna": "^3.13.0"
   }
