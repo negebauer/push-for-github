@@ -34,14 +34,14 @@ save-node-cache: &save-node-cache
 
 push-for-github-server-folder: &push-for-github-server-folder ~/push-for-github/packages/push-for-github-server
 
-checkout-push-for-github-server: &checkout-push-for-github-server
-  checkout:
-    path: *root-folder
-
 push-for-github-server-config: &push-for-github-server-config
   working_directory: *push-for-github-server-folder
   docker:
     - image: circleci/node:11.10
+
+checkout-push-for-github-server: &checkout-push-for-github-server
+  checkout:
+    path: *root-folder
 
 ######### Jobs #########
 
@@ -49,7 +49,7 @@ jobs:
   push-for-github-server-yarn:
     <<: *push-for-github-server-config
     steps:
-      - checkout
+      - *checkout-push-for-github-server
       - *restore-yarn-cache
       - *restore-node-cache
       - *yarn-install
@@ -59,10 +59,10 @@ jobs:
   push-for-github-server-linter:
     <<: *push-for-github-server-config
     steps:
-      - checkout
+      - *checkout-push-for-github-server
       - *restore-yarn-cache
       - *restore-node-cache
-      - run: which nodemon
+      - run: ls ./node_modules
 
 ######### Workflows #########
 
