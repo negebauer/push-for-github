@@ -8,7 +8,7 @@
       "githubRelease": true
     },
     "version": {
-      "allowBranch": "f/server",
+      "allowBranch": "master",
       "message": "chore(release): publish"
     }
   }
