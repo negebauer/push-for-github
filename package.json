@@ -5,6 +5,9 @@
   "author": "Nicolás Gebauer <negebauerm@gmail.com> (https://negebauer.com)",
   "contributors": [],
   "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "lerna": "^3.13.0"
   }
