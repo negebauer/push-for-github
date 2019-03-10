@@ -12,5 +12,8 @@
   },
   "bugs": {
     "url": "https://github.com/negebauer/push-for-github/issues"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
