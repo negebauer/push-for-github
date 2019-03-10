@@ -11,7 +11,7 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "docker-build": "docker build . -t push-for-github-server",
-    "docker-run": "docker run -p 3000:3000 push-for-github-server"
+    "docker-run": "docker run -p 3000:3000 --rm -ti push-for-github-server"
   },
   "bugs": {
     "url": "https://github.com/negebauer/push-for-github/issues"
