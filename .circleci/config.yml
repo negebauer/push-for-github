@@ -5,6 +5,7 @@ version: 2
 root-folder: &root-folder ~/push-for-github
 node-cache-key: &node-cache-key node-v1-{{ checksum "package.json" }}
 yarn-cache-key: &yarn-cache-key yarn-v1-{{ checksum "~/push-for-github/yarn.lock" }}
+node-docker-image: &node-docker-image circleci/node:11.10
 
 restore-yarn-cache: &restore-yarn-cache
   restore_cache:
@@ -37,7 +38,7 @@ push-for-github-server-folder: &push-for-github-server-folder ~/push-for-github/
 push-for-github-server-config: &push-for-github-server-config
   working_directory: *push-for-github-server-folder
   docker:
-    - image: circleci/node:11.10
+    - image: *node-docker-image
   environment:
     DOCKER_REPO: negebauer/push-for-github-server
 
