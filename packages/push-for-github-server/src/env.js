@@ -1,12 +1,11 @@
 const {
-  PORT,
   NODE_ENV: NODE_ENV_RAW,
 } = process.env
 
 const NODE_ENV = NODE_ENV_RAW || 'development'
 
 module.exports = {
-  PORT: PORT || 3000,
+  PORT: 3000,
 
   NODE_ENV,
   PRODUCTION: NODE_ENV === 'production',

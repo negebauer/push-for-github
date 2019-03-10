@@ -6,11 +6,12 @@
   "repository": "https://github.com/negebauer/push-for-github.git",
   "author": "Nicolás Gebauer <negebauerm@gmail.com> (https://negebauer.com)",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node src/index.js",
-    "docker:build": "docker build . -t push-for-github-server"
+    "start": "node index.js",
+    "docker-build": "docker build . -t push-for-github-server",
+    "docker-run": "docker run -p 3000:3000 push-for-github-server"
   },
   "bugs": {
     "url": "https://github.com/negebauer/push-for-github/issues"
