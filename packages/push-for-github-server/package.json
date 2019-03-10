@@ -2,12 +2,13 @@
   "name": "push-for-github-server",
   "version": "0.0.1",
   "description": "Server code for push-for-github",
+  "private": true,
   "repository": "https://github.com/negebauer/push-for-github.git",
   "author": "Nicolás Gebauer <negebauerm@gmail.com> (https://negebauer.com)",
   "license": "MIT",
-  "contributors": [],
   "main": "src/index.js",
   "scripts": {
+    "dev": "nodemon index.js",
     "start": "node src/index.js"
   },
   "bugs": {

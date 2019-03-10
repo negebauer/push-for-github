@@ -5,7 +5,6 @@
   "repository": "https://github.com/negebauer/push-for-github",
   "author": "Nicolás Gebauer <negebauerm@gmail.com> (https://negebauer.com)",
   "license": "MIT",
-  "contributors": [],
   "workspaces": [
     "packages/*"
   ],
