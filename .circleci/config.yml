@@ -55,11 +55,14 @@ jobs:
       - *yarn-install
       - *save-yarn-cache
       - *save-node-cache
-      - persist_to_workspace:
-          root: *root-folder
-          paths:
-            - node_modules
-            - ../../node_modules
+
+  push-for-github-server-linter:
+    <<: *push-for-github-server-config
+    steps:
+      - checkout
+      - *restore-yarn-cache
+      - *restore-node-cache
+      - run: which nodemon
 
 ######### Workflows #########
 
@@ -68,3 +71,6 @@ workflows:
   commit:
     jobs:
       - push-for-github-server-yarn
+      - push-for-github-server-linter:
+          requires:
+            - push-for-github-server-yarn
