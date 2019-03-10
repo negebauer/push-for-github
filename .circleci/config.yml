@@ -31,6 +31,30 @@ save-node-cache: &save-node-cache
       - node_modules
       - ../../node_modules
 
+master-branch-filter: &master-branch-filter
+  filters:
+    branches:
+      only: master
+
+any-tag: &any-tag
+  tags:
+    only: /.*/
+
+develop-filters: &develop-filters
+  filters:
+    branches:
+      only:
+        - /f\/.*/
+        - master
+    <<: *any-tag
+
+deploy-filters: &deploy-filters
+  filters:
+    branches:
+      ignore: /.*/
+    tags:
+      only: /\@([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/
+
 ######### push-for-github-server #########
 
 push-for-github-server-folder: &push-for-github-server-folder ~/push-for-github/packages/push-for-github-server
@@ -95,3 +119,4 @@ workflows:
       - push-for-github-server-docker:
           requires:
             - push-for-github-server-linter
+          <<: *master-branch-filter
