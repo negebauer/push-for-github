@@ -7,10 +7,14 @@ stop() {
   exit 0
 }
 
+error() {
+  exit 1
+}
+
 echo "Checking valid PACKAGE env..."
 if [[ -z $package ]]; then
   echo "no PACKAGE env for this step, fix this!"
-  exit 1
+  error
 fi
 
 echo "Checking if chore commit..."
