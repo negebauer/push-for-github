@@ -6,6 +6,7 @@ root-folder: &root-folder ~/push-for-github
 node-cache-key: &node-cache-key node-v1-{{ checksum "package.json" }}
 yarn-cache-key: &yarn-cache-key yarn-v1-{{ checksum "~/push-for-github/yarn.lock" }}
 node-docker-image: &node-docker-image circleci/node:11.10
+should-run-script: &should-run-script . ../../.circleci/should-run.sh
 
 restore-yarn-cache: &restore-yarn-cache
   restore_cache:
@@ -70,7 +71,10 @@ checkout-push-for-github-server: &checkout-push-for-github-server
     path: *root-folder
 
 should-run-push-for-github-server: &should-run-push-for-github-server
-  run: . ../../.circleci/should-run.sh push-for-github-server
+  name: should-run?
+  run:
+    - *should-run-script
+    - push-for-github-server
 
 ######### Jobs #########
 
