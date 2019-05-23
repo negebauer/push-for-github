@@ -1,4 +1,4 @@
-package=$SHOULD_RUN_PACKAGE
+package=$PACKAGE
 modified_files=$(git diff-tree --no-commit-id --name-only -r HEAD)
 commit_message=$(git show -s --format=%B)
 
@@ -7,9 +7,9 @@ stop() {
   exit 0
 }
 
-echo "Checking valid SHOULD_RUN_PACKAGE env..."
+echo "Checking valid PACKAGE env..."
 if [[ -z $package ]]; then
-  echo "no SHOULD_RUN_PACKAGE env for this step, fix this!"
+  echo "no PACKAGE env for this step, fix this!"
   exit 1
 fi
 
@@ -24,7 +24,7 @@ if [[ $commit_message == chore* ]]; then
   fi
 fi
 
-echo "Checking if package $SHOULD_RUN_PACKAGE changed..."
+echo "Checking if package $PACKAGE changed..."
 if [[ ! $modified_files == *packages/$package/* ]]; then
   echo "No modified files for package $package, stopping"
   stop
