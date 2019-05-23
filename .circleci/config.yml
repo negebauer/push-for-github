@@ -121,8 +121,7 @@ workflows:
   version: 2
   commit:
     jobs:
-      - push-for-github-server-yarn:
-          <<: *develop-filters
+      - push-for-github-server-yarn
       - push-for-github-server-linter:
           requires:
             - push-for-github-server-yarn
