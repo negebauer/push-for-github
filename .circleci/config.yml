@@ -71,10 +71,11 @@ checkout-push-for-github-server: &checkout-push-for-github-server
     path: *root-folder
 
 should-run-push-for-github-server: &should-run-push-for-github-server
-  name: should-run?
   run:
-    - *should-run-script
-    - push-for-github-server
+    name: should-run?
+    command:
+      - *should-run-script
+      - push-for-github-server
 
 ######### Jobs #########
 
@@ -115,7 +116,8 @@ workflows:
   version: 2
   commit:
     jobs:
-      - push-for-github-server-yarn
+      - push-for-github-server-yarn:
+          <<: *develop-filters
       - push-for-github-server-linter:
           requires:
             - push-for-github-server-yarn
