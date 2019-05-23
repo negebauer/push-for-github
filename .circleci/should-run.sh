@@ -7,11 +7,13 @@ stop() {
   exit 0
 }
 
+echo "Checking valid SHOULD_RUN_PACKAGE env..."
 if [[ -z $package ]]; then
   echo "no SHOULD_RUN_PACKAGE env for this step, fix this!"
   exit 1
 fi
 
+echo "Checking if chore commit..."
 if [[ $commit_message == chore* ]]; then
   if [[ ! $commit_message == chore\(docker ]] \
     && [[ ! $commit_message == chore\(deploy ]] \
@@ -22,6 +24,7 @@ if [[ $commit_message == chore* ]]; then
   fi
 fi
 
+echo "Checking if package $SHOULD_RUN_PACKAGE changed"
 if [[ ! $modified_files == *packages/$package/* ]]; then
   echo "No modified files for package $package, stopping"
   stop
