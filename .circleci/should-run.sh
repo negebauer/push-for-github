@@ -7,9 +7,9 @@ stop() {
   exit 0
 }
 
-if [[ $package == "NONE" ]]; then
+if [[ -z $package ]]; then
   echo "no SHOULD_RUN_PACKAGE env for this step, fix this!"
-  stop
+  exit 1
 fi
 
 if [[ $commit_message == chore* ]]; then
