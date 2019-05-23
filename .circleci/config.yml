@@ -9,7 +9,7 @@ node-docker-image: &node-docker-image circleci/node:11.10
 should-run-command: &should-run-command . ../../.circleci/should-run.sh
 
 should-run: &should-run
-  name: should-run?
+  name: stop if no changes
   command: *should-run-command
   environment:
     SHOULD_RUN_PACKAGE: NONE
