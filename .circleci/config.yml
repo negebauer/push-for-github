@@ -46,7 +46,6 @@ develop-filters: &develop-filters
       only:
         - /f\/.*/
         - master
-    <<: *any-tag
 
 deploy-filters: &deploy-filters
   filters:
