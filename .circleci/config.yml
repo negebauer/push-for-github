@@ -10,7 +10,7 @@ should-run-command: &should-run-command . ../../.circleci/should-run.sh
 
 should-run: &should-run
   name: should-run?
-  command: &should-run-command
+  command: *should-run-command
   environment:
     SHOULD_RUN_PACKAGE: NONE
 
