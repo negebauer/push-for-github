@@ -69,7 +69,7 @@ push-for-github-server-config: &push-for-github-server-config
     - image: *node-docker-image
   environment:
     DOCKER_REPO: negebauer/push-for-github-server
-    # SHOULD_RUN_PACKAGE: push-for-github-server
+    SHOULD_RUN_PACKAGE: push-for-github-server
 
 checkout-push-for-github-server: &checkout-push-for-github-server
   checkout:
