@@ -24,7 +24,7 @@ if [[ $commit_message == chore* ]]; then
   fi
 fi
 
-echo "Checking if package $SHOULD_RUN_PACKAGE changed"
+echo "Checking if package $SHOULD_RUN_PACKAGE changed..."
 if [[ ! $modified_files == *packages/$package/* ]]; then
   echo "No modified files for package $package, stopping"
   stop
