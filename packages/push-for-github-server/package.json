@@ -17,7 +17,7 @@
     "url": "https://github.com/negebauer/push-for-github/issues"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.19.1"
   },
   "dependencies": {
     "koa": "^2.7.0",
